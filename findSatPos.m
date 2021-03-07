@@ -1,0 +1,1 @@
+function [x,y,z] = findSatPos(brdc1,in1)
