@@ -10,7 +10,7 @@ mu=3.986005e14;
 OMEGADOTe=7.2921151467e-5;
 A=brdc1.sqrtA^2;
 n0=sqrt(mu/A^3);
-n=n0+brdc1.nDelta
+n=n0+brdc1.nDelta;
 dtsa=in1.pr/c;
 tstilda=in1.tasow-dtsa;
 % *Calculation of toc in GPS sec of week may be
