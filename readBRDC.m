@@ -7,20 +7,22 @@ function brdc = readBRDC(dataRecord)
 % line 1
 prnE=str2double(spaceDelimit(dataRecord{1}(1:22)));
 brdc.prn=prnE(1);
-prnE(2)=2000+prnE(2);
+prnE(2)=2000+prnE(2); % convert yy to yyyy format
 brdc.toc=datetime(prnE(2:end));
 
 % calculate nearest even hr of satellite epoch (toc)
 [y,m,d,h,mi,s]=datevec(brdc.toc);
-%sofhr=mi*60+s;
+
+% transmission epoch (toc) sometimes a couple minutes before
+% an even hr
 if mi~=0
-% brdc transmission epoch (toc) sometimes transmit a couple minutes before
-% an even hr 
+
     h=h+1;
     s=0;
     mi=0;
 end
-brdc.tocnear=datetime(y,m,d,h,mi,s);
+% rounds toc for helper func findBRDC
+brdc.tocnear=datetime(y,m,d,h,mi,s); 
 
 svc=str2double(fixedWidth(dataRecord{1}(23:end),19));
 brdc.af0=svc(1);brdc.af1=svc(2);brdc.af2=svc(3);
@@ -52,7 +54,6 @@ brdc.Crc=temp(2);
 brdc.omega=temp(3);
 brdc.OMEGADOT=temp(4);
 
-%line 6
 % line 6
 temp=str2double(fixedWidth(dataRecord{6}(4:end),19));
 brdc.IDOT=temp(1);
