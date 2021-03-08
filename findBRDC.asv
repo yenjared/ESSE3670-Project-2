@@ -5,10 +5,9 @@ function ind = findBRDC(brdc,prn,ta)
 % returns -1 if BRDC struct not found or 0 if there's a duplicate
 ind=-1;
 
-% finds nearest broadcast epoch 
-% corresponding to reception time
+% find nearest satellite
 [y,m,d,h,~,~]=datevec(ta);
-hrs=[0:2:24]; % satellites broadcast every even hr
+hrs=[0:2:22]; % satellites broadcast every even hr
 hrs=hrs(hrs<h); % removes all satellite hours above reception time
 htoc=hrs(end); % extracts closest even hr before reception time
 tatoc=datetime(y,m,d,htoc,0,0);

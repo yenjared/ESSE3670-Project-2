@@ -12,13 +12,13 @@ brdc.toc=datetime(prnE(2:end));
 
 % calculate nearest even hr of satellite epoch (toc)
 [y,m,d,h,mi,s]=datevec(brdc.toc);
-%sofhr=mi*60+s;
-if mi~=0
-% brdc transmission epoch (toc) sometimes transmit a couple minutes before
-% an even hr 
+sofhr=mi*60+s;
+if sofhr>=59*60
+% brdc transmission epoch commonly transmits at an even hr at 59 min
     h=h+1;
     s=0;
     mi=0;
+elseif 
 end
 brdc.tocnear=datetime(y,m,d,h,mi,s);
 

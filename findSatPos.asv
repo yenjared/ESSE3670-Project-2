@@ -44,8 +44,9 @@ dtr=F*brdc1.e*brdc1.sqrtA*sin(Ek0);
 % tstilda-tocsow
 dtsL1=brdc1.af0+brdc1.af1*(tstilda-tocsow)+brdc1.af2*(tstilda-tocsow)^2+dtr;
 ts=tstilda-dtsL1;
-% ts-in1.tasow;
+ts-in1.tasow;
 tk=ts-brdc1.toe;
+if tk>302400
 Mk=brdc1.M0+n*tk;
 
 % Recompute eccentric anomaly Ek iteratively
